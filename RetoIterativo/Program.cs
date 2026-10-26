@@ -6,16 +6,79 @@ namespace RetoIterativo
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("==================================================");
-            Console.WriteLine(" RETO: ESTRUCTURAS DE CONTROL ITERATIVO EN C#");
-            Console.WriteLine("==================================================\n");
-
-            // ==========================================
-            // SECCIÓN 1 — For y Foreach: Registro y análisis
-            // ==========================================
-            Console.WriteLine("--- SECCIÓN 1: REGISTRO Y ANÁLISIS DE CALIFICACIONES ---");
-            
             int[] calificaciones = { 72, 85, 91, 60, 43, 78, 95, 55, 88, 67 };
+            int opcion;
+
+            do
+            {
+                Console.Clear();
+                Console.WriteLine("==================================================");
+                Console.WriteLine("  RETO: ESTRUCTURAS DE CONTROL ITERATIVO EN C#");
+                Console.WriteLine("==================================================");
+                Console.WriteLine("1. Sección 1 — For y Foreach (Registro y análisis)");
+                Console.WriteLine("2. Sección 2 — While y Do-While (Acceso y Menú)");
+                Console.WriteLine("3. Sección 3 — Break y Continue (Filtrado y búsqueda)");
+                Console.WriteLine("4. Ejecutar todas las secciones secuencialmente");
+                Console.WriteLine("5. Salir");
+                Console.WriteLine("==================================================");
+                Console.Write("Seleccione una opción (1-5): ");
+
+                if (!int.TryParse(Console.ReadLine(), out opcion))
+                {
+                    Console.WriteLine("\n[Error] Por favor ingrese un número válido.");
+                    Console.WriteLine("Presione cualquier tecla para continuar...");
+                    Console.ReadKey();
+                    continue;
+                }
+
+                switch (opcion)
+                {
+                    case 1:
+                        Console.Clear();
+                        EjecutarSeccion1(calificaciones);
+                        break;
+
+                    case 2:
+                        Console.Clear();
+                        EjecutarSeccion2(calificaciones);
+                        break;
+
+                    case 3:
+                        Console.Clear();
+                        EjecutarSeccion3(calificaciones);
+                        break;
+
+                    case 4:
+                        Console.Clear();
+                        Console.WriteLine("=== EJECUTANDO TODAS LAS SECCIONES ===\n");
+                        EjecutarSeccion1(calificaciones);
+                        Console.WriteLine("\n--------------------------------------------------");
+                        EjecutarSeccion2(calificaciones);
+                        Console.WriteLine("\n--------------------------------------------------");
+                        EjecutarSeccion3(calificaciones);
+                        break;
+
+                    case 5:
+                        Console.WriteLine("\nSaliendo del programa. ¡Hasta luego!");
+                        break;
+
+                    default:
+                        Console.WriteLine("\n[Error] Opción no válida. Seleccione entre 1 y 5.");
+                        break;
+                }
+
+                if (opcion != 5)
+                {
+                    Console.WriteLine("\nPresione cualquier tecla para volver al menú principal...");
+                    Console.ReadKey();
+                }
+
+            } while (opcion != 5);
+        }
+
+        static void EjecutarSeccion1(int[] calificaciones)
+        {
+            Console.WriteLine("--- SECCIÓN 1: REGISTRO Y ANÁLISIS DE CALIFICACIONES ---");
 
             // 1. Recorrido con bucle for (ascendente)
             Console.WriteLine("\n=== REGISTRO DE CALIFICACIONES ===");
@@ -48,13 +111,11 @@ namespace RetoIterativo
             {
                 Console.WriteLine($"Posición par: {calificaciones[i]}");
             }
+        }
 
-            Console.WriteLine("\n--------------------------------------------------");
-
-            // ==========================================
-            // SECCIÓN 2 — While y Do-While: Validación y menú
-            // ==========================================
-            Console.WriteLine("\n--- SECCIÓN 2: CONTROL DE ACCESO Y MENÚ INTERACTIVO ---");
+        static void EjecutarSeccion2(int[] calificaciones)
+        {
+            Console.WriteLine("--- SECCIÓN 2: CONTROL DE ACCESO Y MENÚ INTERACTIVO ---");
 
             // 1. Sistema de acceso con while
             string claveCorrecta = "sena2025";
@@ -91,39 +152,39 @@ namespace RetoIterativo
 
             if (!accesoConcedido)
             {
-                Console.WriteLine("\nDemasiados intentos fallidos. Saliendo del sistema.");
+                Console.WriteLine("\nDemasiados intentos fallidos. Regresando al menú principal.");
                 return;
             }
 
             // 2. Menú interactivo con do-while
-            int opcion;
+            int opcionMenu;
             do
             {
                 Console.WriteLine("\n=== MENÚ PRINCIPAL ===");
                 Console.WriteLine("1. Ver promedio del grupo");
                 Console.WriteLine("2. Ver calificación más alta");
-                Console.WriteLine("3. Salir");
+                Console.WriteLine("3. Salir del menú");
                 Console.Write("Elige una opción: ");
 
-                if (!int.TryParse(Console.ReadLine(), out opcion))
+                if (!int.TryParse(Console.ReadLine(), out opcionMenu))
                 {
                     Console.WriteLine("Opción no válida. Intenta de nuevo.");
                     continue;
                 }
 
-                switch (opcion)
+                switch (opcionMenu)
                 {
                     case 1:
-                        Console.WriteLine($"Promedio del grupo: {promedio:F1}");
+                        int suma = 0;
+                        foreach (var c in calificaciones) suma += c;
+                        double prom = (double)suma / calificaciones.Length;
+                        Console.WriteLine($"Promedio del grupo: {prom:F1}");
                         break;
                     case 2:
                         int notaAlta = calificaciones[0];
                         foreach (var cal in calificaciones)
                         {
-                            if (cal > notaAlta)
-                            {
-                                notaAlta = cal;
-                            }
+                            if (cal > notaAlta) notaAlta = cal;
                         }
                         Console.WriteLine($"Calificación más alta: {notaAlta}");
                         break;
@@ -134,14 +195,12 @@ namespace RetoIterativo
                         Console.WriteLine("Opción no válida. Intenta de nuevo.");
                         break;
                 }
-            } while (opcion != 3);
+            } while (opcionMenu != 3);
+        }
 
-            Console.WriteLine("\n--------------------------------------------------");
-
-            // ==========================================
-            // SECCIÓN 3 — Break y Continue: Filtrado y búsqueda
-            // ==========================================
-            Console.WriteLine("\n--- SECCIÓN 3: FILTRADO Y BÚSQUEDA EFICIENTE ---");
+        static void EjecutarSeccion3(int[] calificaciones)
+        {
+            Console.WriteLine("--- SECCIÓN 3: FILTRADO Y BÚSQUEDA EFICIENTE ---");
 
             // 1. Primera calificación reprobatoria con for y break
             Console.WriteLine("\n=== PRIMERA CALIFICACIÓN REPROBATORIA ===");
@@ -151,7 +210,7 @@ namespace RetoIterativo
             {
                 if (calificaciones[i] < 60)
                 {
-                    posReprobatoria = i + 1; // Posición humana (1-based)
+                    posReprobatoria = i + 1;
                     valorReprobatorio = calificaciones[i];
                     break;
                 }
@@ -186,19 +245,15 @@ namespace RetoIterativo
                 int cal = calificaciones[i];
                 if (cal < 70)
                 {
-                    continue; // Salta las menores a 70
+                    continue;
                 }
                 if (cal >= 95)
                 {
                     Console.WriteLine($"Búsqueda detenida al encontrar: {cal}");
-                    break; // Detiene al encontrar 95 o más
+                    break;
                 }
                 Console.WriteLine($"Calificación procesada: {cal}");
             }
-
-            Console.WriteLine("\n==================================================");
-            Console.WriteLine(" Fin del Reto.");
-            Console.WriteLine("==================================================");
         }
     }
 }
