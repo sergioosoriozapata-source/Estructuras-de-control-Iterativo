@@ -1,180 +1,204 @@
 ﻿using System;
-using System.Collections.Generic;
 
 namespace RetoIterativo
 {
-    class Estudiante
-    {
-        public string Nombre { get; set; } = string.Empty;
-        public double Nota { get; set; }
-    }
-
     class Program
     {
         static void Main(string[] args)
         {
-            List<Estudiante> listaEstudiantes = new List<Estudiante>();
-            int opcion;
+            Console.WriteLine("==================================================");
+            Console.WriteLine(" RETO: ESTRUCTURAS DE CONTROL ITERATIVO EN C#");
+            Console.WriteLine("==================================================\n");
 
+            // ==========================================
+            // SECCIÓN 1 — For y Foreach: Registro y análisis
+            // ==========================================
+            Console.WriteLine("--- SECCIÓN 1: REGISTRO Y ANÁLISIS DE CALIFICACIONES ---");
+            
+            int[] calificaciones = { 72, 85, 91, 60, 43, 78, 95, 55, 88, 67 };
+
+            // 1. Recorrido con bucle for (ascendente)
+            Console.WriteLine("\n=== REGISTRO DE CALIFICACIONES ===");
+            for (int i = 0; i < calificaciones.Length; i++)
+            {
+                Console.WriteLine($"Estudiante {i + 1}: {calificaciones[i]}");
+            }
+
+            // 2. Recorrido descendente con bucle for
+            Console.WriteLine("\n=== ORDEN DESCENDENTE ===");
+            for (int i = calificaciones.Length - 1; i >= 0; i--)
+            {
+                Console.WriteLine($"Estudiante {i + 1}: {calificaciones[i]}");
+            }
+
+            // 3. Suma total y promedio con foreach
+            Console.WriteLine("\n=== PROMEDIO DEL GRUPO ===");
+            int sumaTotal = 0;
+            foreach (var cal in calificaciones)
+            {
+                sumaTotal += cal;
+            }
+            double promedio = (double)sumaTotal / calificaciones.Length;
+            Console.WriteLine($"Suma total: {sumaTotal}");
+            Console.WriteLine($"Promedio: {promedio:F1}");
+
+            // 4. Recorrido de posiciones pares con for (incremento de 2)
+            Console.WriteLine("\n=== POSICIONES PARES ===");
+            for (int i = 0; i < calificaciones.Length; i += 2)
+            {
+                Console.WriteLine($"Posición par: {calificaciones[i]}");
+            }
+
+            Console.WriteLine("\n--------------------------------------------------");
+
+            // ==========================================
+            // SECCIÓN 2 — While y Do-While: Validación y menú
+            // ==========================================
+            Console.WriteLine("\n--- SECCIÓN 2: CONTROL DE ACCESO Y MENÚ INTERACTIVO ---");
+
+            // 1. Sistema de acceso con while
+            string claveCorrecta = "sena2025";
+            int intentos = 0;
+            int maxIntentos = 3;
+            bool accesoConcedido = false;
+
+            Console.WriteLine("\n=== CONTROL DE ACCESO ===");
+            while (intentos < maxIntentos)
+            {
+                Console.Write("Ingresa la clave: ");
+                string? ingreso = Console.ReadLine();
+
+                if (ingreso == claveCorrecta)
+                {
+                    Console.WriteLine("Acceso concedido.");
+                    accesoConcedido = true;
+                    break;
+                }
+                else
+                {
+                    intentos++;
+                    int intentosRestantes = maxIntentos - intentos;
+                    if (intentosRestantes > 0)
+                    {
+                        Console.WriteLine($"Clave incorrecta. Intentos restantes: {intentosRestantes}");
+                    }
+                    else
+                    {
+                        Console.WriteLine("Acceso bloqueado.");
+                    }
+                }
+            }
+
+            if (!accesoConcedido)
+            {
+                Console.WriteLine("\nDemasiados intentos fallidos. Saliendo del sistema.");
+                return;
+            }
+
+            // 2. Menú interactivo con do-while
+            int opcion;
             do
             {
-                Console.Clear();
-                Console.WriteLine("==================================================");
-                Console.WriteLine("  SISTEMA DE GESTIÓN DE CALIFICACIONES - SENA");
-                Console.WriteLine("==================================================");
-                Console.WriteLine("1. Registrar calificaciones de estudiantes");
-                Console.WriteLine("2. Mostrar lista de estudiantes y notas");
-                Console.WriteLine("3. Calcular estadísticas (Promedio, Nota Máxima y Mínima)");
-                Console.WriteLine("4. Buscar estudiante por nombre");
-                Console.WriteLine("5. Salir");
-                Console.WriteLine("==================================================");
-                Console.Write("Seleccione una opción (1-5): ");
+                Console.WriteLine("\n=== MENÚ PRINCIPAL ===");
+                Console.WriteLine("1. Ver promedio del grupo");
+                Console.WriteLine("2. Ver calificación más alta");
+                Console.WriteLine("3. Salir");
+                Console.Write("Elige una opción: ");
 
                 if (!int.TryParse(Console.ReadLine(), out opcion))
                 {
-                    Console.WriteLine("\n[Error] Por favor ingrese un número válido.");
-                    Console.WriteLine("Presione cualquier tecla para continuar...");
-                    Console.ReadKey();
+                    Console.WriteLine("Opción no válida. Intenta de nuevo.");
                     continue;
                 }
 
                 switch (opcion)
                 {
                     case 1:
-                        Console.Clear();
-                        Console.WriteLine("--- REGISTRO DE CALIFICACIONES ---");
-                        Console.Write("¿Cuántos estudiantes desea registrar?: ");
-                        
-                        if (int.TryParse(Console.ReadLine(), out int cantidad) && cantidad > 0)
-                        {
-                            for (int i = 1; i <= cantidad; i++)
-                            {
-                                Console.WriteLine($"\nEstudiante #{i}:");
-                                Console.Write("  Nombre: ");
-                                string? nombre = Console.ReadLine();
-
-                                double nota;
-                                while (true)
-                                {
-                                    Console.Write("  Nota (0.0 a 5.0): ");
-                                    if (double.TryParse(Console.ReadLine(), out nota) && nota >= 0.0 && nota <= 5.0)
-                                    {
-                                        break;
-                                    }
-                                    Console.WriteLine("  [Error] Nota inválida. Ingrese un valor entre 0.0 y 5.0.");
-                                }
-
-                                listaEstudiantes.Add(new Estudiante { Nombre = nombre ?? "Sin nombre", Nota = nota });
-                            }
-                            Console.WriteLine("\n¡Registro completado exitosamente!");
-                        }
-                        else
-                        {
-                            Console.WriteLine("\n[Error] Cantidad no válida.");
-                        }
+                        Console.WriteLine($"Promedio del grupo: {promedio:F1}");
                         break;
-
                     case 2:
-                        Console.Clear();
-                        Console.WriteLine("--- LISTADO DE ESTUDIANTES ---");
-                        if (listaEstudiantes.Count == 0)
+                        int notaAlta = calificaciones[0];
+                        foreach (var cal in calificaciones)
                         {
-                            Console.WriteLine("No hay estudiantes registrados en el sistema.");
-                        }
-                        else
-                        {
-                            Console.WriteLine($"{"No.",-5} {"Nombre",-25} {"Nota",-10} {"Estado",-15}");
-                            Console.WriteLine(new string('-', 55));
-                            
-                            int index = 1;
-                            foreach (var est in listaEstudiantes)
+                            if (cal > notaAlta)
                             {
-                                string estado = est.Nota >= 3.0 ? "Aprobado ✅" : "Reprobado ❌";
-                                Console.WriteLine($"{index,-5} {est.Nombre,-25} {est.Nota,-10:F1} {estado,-15}");
-                                index++;
+                                notaAlta = cal;
                             }
                         }
+                        Console.WriteLine($"Calificación más alta: {notaAlta}");
                         break;
-
                     case 3:
-                        Console.Clear();
-                        Console.WriteLine("--- ESTADÍSTICAS DEL GRUPO ---");
-                        if (listaEstudiantes.Count == 0)
-                        {
-                            Console.WriteLine("No hay datos suficientes para calcular estadísticas.");
-                        }
-                        else
-                        {
-                            double suma = 0;
-                            double notaAlta = listaEstudiantes[0].Nota;
-                            double notaBaja = listaEstudiantes[0].Nota;
-                            string estudianteAlto = listaEstudiantes[0].Nombre;
-                            string estudianteBajo = listaEstudiantes[0].Nombre;
-
-                            foreach (var est in listaEstudiantes)
-                            {
-                                suma += est.Nota;
-                                if (est.Nota > notaAlta)
-                                {
-                                    notaAlta = est.Nota;
-                                    estudianteAlto = est.Nombre;
-                                }
-                                if (est.Nota < notaBaja)
-                                {
-                                    notaBaja = est.Nota;
-                                    estudianteBajo = est.Nombre;
-                                }
-                            }
-
-                            double promedio = suma / listaEstudiantes.Count;
-
-                            Console.WriteLine($"Total de estudiantes evaluados : {listaEstudiantes.Count}");
-                            Console.WriteLine($"Promedio general del grupo     : {promedio:F2}");
-                            Console.WriteLine($"Nota más alta                  : {notaAlta:F1} ({estudianteAlto})");
-                            Console.WriteLine($"Nota más baja                  : {notaBaja:F1} ({estudianteBajo})");
-                        }
+                        Console.WriteLine("Hasta luego.");
                         break;
-
-                    case 4:
-                        Console.Clear();
-                        Console.WriteLine("--- BÚSQUEDA DE ESTUDIANTE ---");
-                        Console.Write("Ingrese el nombre (o parte del nombre) a buscar: ");
-                        string busqueda = Console.ReadLine()?.ToLower() ?? "";
-
-                        bool encontrado = false;
-                        Console.WriteLine($"\nResultados para \"{busqueda}\":");
-                        foreach (var est in listaEstudiantes)
-                        {
-                            if (est.Nombre.ToLower().Contains(busqueda))
-                            {
-                                string estado = est.Nota >= 3.0 ? "Aprobado" : "Reprobado";
-                                Console.WriteLine($"- Nombre: {est.Nombre} | Nota: {est.Nota:F1} | Estado: {estado}");
-                                encontrado = true;
-                            }
-                        }
-
-                        if (!encontrado)
-                        {
-                            Console.WriteLine("No se encontraron estudiantes con ese criterio.");
-                        }
-                        break;
-
-                    case 5:
-                        Console.WriteLine("\nSaliendo del sistema. ¡Hasta luego!");
-                        break;
-
                     default:
-                        Console.WriteLine("\n[Error] Opción no válida. Seleccione entre 1 y 5.");
+                        Console.WriteLine("Opción no válida. Intenta de nuevo.");
                         break;
                 }
+            } while (opcion != 3);
 
-                if (opcion != 5)
+            Console.WriteLine("\n--------------------------------------------------");
+
+            // ==========================================
+            // SECCIÓN 3 — Break y Continue: Filtrado y búsqueda
+            // ==========================================
+            Console.WriteLine("\n--- SECCIÓN 3: FILTRADO Y BÚSQUEDA EFICIENTE ---");
+
+            // 1. Primera calificación reprobatoria con for y break
+            Console.WriteLine("\n=== PRIMERA CALIFICACIÓN REPROBATORIA ===");
+            int posReprobatoria = -1;
+            int valorReprobatorio = -1;
+            for (int i = 0; i < calificaciones.Length; i++)
+            {
+                if (calificaciones[i] < 60)
                 {
-                    Console.WriteLine("\nPresione cualquier tecla para volver al menú...");
-                    Console.ReadKey();
+                    posReprobatoria = i + 1; // Posición humana (1-based)
+                    valorReprobatorio = calificaciones[i];
+                    break;
                 }
+            }
+            if (posReprobatoria != -1)
+            {
+                Console.WriteLine($"Encontrada en posición {posReprobatoria}: {valorReprobatorio}");
+            }
+            else
+            {
+                Console.WriteLine("No se encontraron calificaciones reprobatorias.");
+            }
 
-            } while (opcion != 5);
+            // 2. Estudiantes aprobados con foreach y continue
+            Console.WriteLine("\n=== ESTUDIANTES APROBADOS ===");
+            int totalAprobados = 0;
+            foreach (var cal in calificaciones)
+            {
+                if (cal < 60)
+                {
+                    continue;
+                }
+                Console.WriteLine($"Aprobado: {cal}");
+                totalAprobados++;
+            }
+            Console.WriteLine($"Total aprobados: {totalAprobados}");
+
+            // 3. Filtro combinado con break y continue
+            Console.WriteLine("\n=== FILTRO COMBINADO ===");
+            for (int i = 0; i < calificaciones.Length; i++)
+            {
+                int cal = calificaciones[i];
+                if (cal < 70)
+                {
+                    continue; // Salta las menores a 70
+                }
+                if (cal >= 95)
+                {
+                    Console.WriteLine($"Búsqueda detenida al encontrar: {cal}");
+                    break; // Detiene al encontrar 95 o más
+                }
+                Console.WriteLine($"Calificación procesada: {cal}");
+            }
+
+            Console.WriteLine("\n==================================================");
+            Console.WriteLine(" Fin del Reto.");
+            Console.WriteLine("==================================================");
         }
     }
 }

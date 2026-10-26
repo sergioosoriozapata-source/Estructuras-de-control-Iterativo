@@ -1,8 +1,5 @@
 C:\Users\yanet\Desktop\220501097-04-AA1 – EV05 – Aplicación de la sintaxis básica de C# -Estructuras de control Iterativo\RetoIterativo\bin\Debug\net10.0\RetoIterativo.exe
-C:\Users\yanet\Desktop\220501097-04-AA1 – EV05 – Aplicación de la sintaxis básica de C# -Estructuras de control Iterativo\RetoIterativo\bin\Debug\net10.0\RetoIterativo.deps.json
-C:\Users\yanet\Desktop\220501097-04-AA1 – EV05 – Aplicación de la sintaxis básica de C# -Estructuras de control Iterativo\RetoIterativo\bin\Debug\net10.0\RetoIterativo.runtimeconfig.json
 C:\Users\yanet\Desktop\220501097-04-AA1 – EV05 – Aplicación de la sintaxis básica de C# -Estructuras de control Iterativo\RetoIterativo\bin\Debug\net10.0\RetoIterativo.dll
-C:\Users\yanet\Desktop\220501097-04-AA1 – EV05 – Aplicación de la sintaxis básica de C# -Estructuras de control Iterativo\RetoIterativo\bin\Debug\net10.0\RetoIterativo.pdb
 C:\Users\yanet\Desktop\220501097-04-AA1 – EV05 – Aplicación de la sintaxis básica de C# -Estructuras de control Iterativo\RetoIterativo\obj\Debug\net10.0\RetoIterativo.GeneratedMSBuildEditorConfig.editorconfig
 C:\Users\yanet\Desktop\220501097-04-AA1 – EV05 – Aplicación de la sintaxis básica de C# -Estructuras de control Iterativo\RetoIterativo\obj\Debug\net10.0\RetoIterativo.AssemblyInfoInputs.cache
 C:\Users\yanet\Desktop\220501097-04-AA1 – EV05 – Aplicación de la sintaxis básica de C# -Estructuras de control Iterativo\RetoIterativo\obj\Debug\net10.0\RetoIterativo.AssemblyInfo.cs
@@ -10,5 +7,8 @@ C:\Users\yanet\Desktop\220501097-04-AA1 – EV05 – Aplicación de la sintaxis 
 C:\Users\yanet\Desktop\220501097-04-AA1 – EV05 – Aplicación de la sintaxis básica de C# -Estructuras de control Iterativo\RetoIterativo\obj\Debug\net10.0\RetoIterativo.dll
 C:\Users\yanet\Desktop\220501097-04-AA1 – EV05 – Aplicación de la sintaxis básica de C# -Estructuras de control Iterativo\RetoIterativo\obj\Debug\net10.0\refint\RetoIterativo.dll
 C:\Users\yanet\Desktop\220501097-04-AA1 – EV05 – Aplicación de la sintaxis básica de C# -Estructuras de control Iterativo\RetoIterativo\obj\Debug\net10.0\RetoIterativo.pdb
+C:\Users\yanet\Desktop\220501097-04-AA1 – EV05 – Aplicación de la sintaxis básica de C# -Estructuras de control Iterativo\RetoIterativo\bin\Debug\net10.0\RetoIterativo.deps.json
+C:\Users\yanet\Desktop\220501097-04-AA1 – EV05 – Aplicación de la sintaxis básica de C# -Estructuras de control Iterativo\RetoIterativo\bin\Debug\net10.0\RetoIterativo.runtimeconfig.json
+C:\Users\yanet\Desktop\220501097-04-AA1 – EV05 – Aplicación de la sintaxis básica de C# -Estructuras de control Iterativo\RetoIterativo\bin\Debug\net10.0\RetoIterativo.pdb
 C:\Users\yanet\Desktop\220501097-04-AA1 – EV05 – Aplicación de la sintaxis básica de C# -Estructuras de control Iterativo\RetoIterativo\obj\Debug\net10.0\RetoIterativo.genruntimeconfig.cache
 C:\Users\yanet\Desktop\220501097-04-AA1 – EV05 – Aplicación de la sintaxis básica de C# -Estructuras de control Iterativo\RetoIterativo\obj\Debug\net10.0\ref\RetoIterativo.dll
