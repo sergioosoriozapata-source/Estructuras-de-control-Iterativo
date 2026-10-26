@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("RetoIterativo")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+a2ee5619ecc635e62a4e6027a397427449a90309")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+12a40812df43051c62db49dc078f2e253def2960")]
 [assembly: System.Reflection.AssemblyProductAttribute("RetoIterativo")]
 [assembly: System.Reflection.AssemblyTitleAttribute("RetoIterativo")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
